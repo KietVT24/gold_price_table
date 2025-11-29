@@ -13,8 +13,8 @@ npm install
 Tạo file `.env.local` trong thư mục gốc với nội dung:
 
 ```env
-ADMIN_PASSWORD=password
-NEXT_PUBLIC_ADMIN_PASSWORD=password
+ADMIN_PASSWORD=
+NEXT_PUBLIC_ADMIN_PASSWORD=
 SHOP_NAME=Tiệm Vàng ABC
 NEXT_PUBLIC_SHOP_NAME=Tiệm Vàng ABC
 SHOP_HOTLINE=090xxxxxxx
