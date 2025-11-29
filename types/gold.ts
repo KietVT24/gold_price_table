@@ -16,3 +16,12 @@ export interface PriceChange {
     sellChange: 'up' | 'down' | 'none';
   };
 }
+
+export interface GoldPriceDocument {
+  _id?: string;
+  id: number;
+  name: string;
+  buy: number;
+  sell: number;
+  updatedAt: Date;
+}
