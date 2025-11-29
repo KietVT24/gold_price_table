@@ -1,26 +1,106 @@
+/* ==========================================================================
+   GLOBAL.CSS – Tối ưu cho Next.js + TailwindCSS v4 (2025)
+   Hỗ trợ hoàn chỉnh tiếng Việt, font thống nhất, nhẹ và sạch.
+   ========================================================================== */
+
+/* 1. Layers bắt buộc của Tailwind v4 */
+@layer theme, base, components, utilities;
+
+/* 2. Import đầy đủ Tailwind v4 */
 @import "tailwindcss";
 
-:root {
+/* 3. Định nghĩa theme: font – màu – background */
+@theme {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Font hỗ trợ Tiếng Việt đầy đủ */
+  --font-sans: "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* 4. Dark mode tự động */
 @media (prefers-color-scheme: dark) {
-  :root {
+  @theme {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 5. Dark mode thủ công bằng class="dark" */
+html.dark {
+  @theme {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+@layer base {
+  /* Bật font từ next/font */
+  html,
+  body {
+    @apply min-h-screen;
+    background: theme(--background);
+    color: theme(--foreground);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Chống nhấp nháy font khi load */
+  * {
+    font-family: inherit;
+  }
+}
+
+/* ==========================================================================
+   UTILITIES (Custom)
+   ========================================================================== */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animation giá vàng */
+  .price-up {
+    animation: flashUp 1.8s ease-out forwards;
+  }
+
+  .price-down {
+    animation: flashDown 1.8s ease-out forwards;
+  }
+}
+
+/* ==========================================================================
+   KEYFRAMES
+   ========================================================================== */
+
+@keyframes flashUp {
+  0% {
+    background-color: rgba(34, 197, 94, 0.45);
+    transform: scale(1.04);
+  }
+  40% {
+    background-color: rgba(34, 197, 94, 0.25);
+  }
+  100% {
+    background-color: transparent;
+    transform: scale(1);
+  }
+}
+
+@keyframes flashDown {
+  0% {
+    background-color: rgba(239, 68, 68, 0.45);
+    transform: scale(1.04);
+  }
+  40% {
+    background-color: rgba(239, 68, 68, 0.25);
+  }
+  100% {
+    background-color: transparent;
+    transform: scale(1);
+  }
 }
