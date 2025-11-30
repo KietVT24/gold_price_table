@@ -9,7 +9,7 @@ const font = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Bảng Giá Vàng - " + (process.env.SHOP_NAME || "Tiệm Vàng ABC"),
+  title: "Bảng Giá Vàng - " + (process.env.SHOP_NAME || "Hiệu Vàng Kiều Anh"),
   description: "Bảng giá vàng cập nhật realtime",
   robots: "noindex, nofollow",
 };
